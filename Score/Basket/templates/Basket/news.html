@@ -1,0 +1,96 @@
+{% extends 'Basket/base.html' %}
+{% load static %}
+
+<title>{{ title }}</title>
+
+{% block content %}
+
+    <!-- breadcrumb part start-->
+    <section class="breadcrumb_part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <h2>НОВОСТИ</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end-->
+
+    <!--================Blog Area =================-->
+    <section class="blog_area section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        {% for nov in novelty %}
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="{{ nov.image.url }}" alt="">
+                                <div class="blog_item_date">
+                                    <h3>{{ nov.time_create.day }}</h3>
+                                    <p>{{ nov.time_create|date:"E" }}</p>
+                                </div>
+                            </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="{% url 'news_detail' slug_new=nov.slug %}">
+                                    <h2>{{ nov.title }}</h2>
+                                </a>
+                                <p>{{ nov.content|linebreaks|truncatewords:20 }}</p>
+                                <ul class="blog-info-link">
+<!--                                    <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>-->
+                                </ul>
+                            </div>
+                        </article>
+{% endfor %}
+
+
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="{% url 'news' %}" >
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder='Поиск' name="search"
+                                            onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Search Keyword'">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="button"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1"
+                                    type="submit">Поиск</button>
+                            </form>
+                        </aside>
+
+
+
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Недавние посты</h3>
+                            {% for i in novelty_0_4 %}
+                            <div class="media post_item">
+                                <img src="{{ i.image_80_80.url }}" alt="post">
+                                <div class="media-body">
+                                    <a href="{% url 'news_detail' slug_new=i.slug %}">
+                                        <h3>{{ i.title|truncatewords:3 }}</h3>
+                                    </a>
+                                    <p>{{ i.time_create.date }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+
+    {% endblock %}

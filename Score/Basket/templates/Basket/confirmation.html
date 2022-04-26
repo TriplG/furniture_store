@@ -1,0 +1,101 @@
+{% extends 'Basket/base.html' %}
+{% load static %}
+
+<title>{{ title }}</title>
+
+{% block content %}
+
+    <!-- breadcrumb part start-->
+    <section class="breadcrumb_part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <h2>Заказы</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end-->
+
+  <!--================ confirmation part start =================-->
+  <section class="confirmation_part section_padding">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="confirmation_tittle">
+            <span>Спасибо, что выбрали нас.</span>
+          </div>
+         {% for o in order %}
+        </div>
+
+        <div class="col-lg-6 col-lx-4">
+          <div class="single_confirmation_details">
+            <h4>Информация о заказе</h4>
+            <ul>
+              <li>
+                <p>Номер заказа</p><span>: {{ o.pk }}</span>
+              </li>
+              <li>
+                <p>Сумма заказа</p><span>: {{ sum_order }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 col-lx-4">
+          <div class="single_confirmation_details">
+            <h4>Billing Address</h4>
+            <ul>
+              <li>
+                <p>Улица</p><span>:  {{ client.street }}</span>
+              </li>
+              <li>
+                <p>Номер дома</p><span>:  {{ client.house }}</span>
+              </li>
+              <li>
+                <p>Номер квартиры</p><span>:  {{ client.number_apartment }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="order_details_iner">
+            <h3>Заказ</h3>
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col" colspan="2">Товары:</th>
+                  <th scope="col">Количество</th>
+                  <th scope="col">Цена</th>
+                </tr>
+              </thead>
+              <tbody>
+        {% for i in o.order_products.all %}
+                <tr>
+                  <th colspan="2"><span>{{ i.product.title }} </span></th>
+                  <th>x01</th>
+                  <th> <span>{{ i.product.price }}</span></th>
+                </tr>
+        {% endfor %}
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+{% endfor %}
+
+      </div>
+
+    </div>
+
+  </section>
+  <!--================ confirmation part end =================-->
+
+
+
+      {% endblock %}

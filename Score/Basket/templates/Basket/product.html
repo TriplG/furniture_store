@@ -1,0 +1,72 @@
+{% extends 'Basket/base.html' %}
+{% load static %}
+
+<title>{{ product1.pk }}</title>
+
+{% block content %}
+
+    <!-- breadcrumb part start-->
+    <section class="breadcrumb_part single_product_breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end-->
+
+  <!--================Single Product Area =================-->
+  <div class="product_image_area">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="product_img_slide owl-carousel">
+            <div class="single_product_img">
+<!--              <img src="img/product/single_product.png" alt="#" class="img-fluid">-->
+               <img src="{{ product1.image.url }}" alt="#" class="img-fluid">
+
+            </div>
+<!--            <div class="single_product_img">-->
+<!--              <img src="img/product/single_product.png" alt="#" class="img-fluid">-->
+<!--            </div>-->
+<!--            <div class="single_product_img">-->
+<!--              <img src="img/product/single_product.png" alt="#" class="img-fluid">-->
+<!--            </div>-->
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="single_product_text text-center">
+            <h3>{{ product1.title }}</h3>
+            <p>
+                {{ product1.description }}  </p>
+              <form action="{% url 'add_to_cart_home' id_prod=product1.pk %}" method="POST">
+                  {% csrf_token %}
+            <div class="card_area">
+                <div class="product_count_area">
+                    <p>Количество</p>
+                    <div class="product_count d-inline-block">
+                        <span class="product_count_item inumber-decrement"><i class="ti-minus"></i></span>
+                        <input class="product_count_item input-number" type="text" value="1" min="1" max="10" name="qty">
+                        <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
+                    </div>
+                    <p>Цена {{ product1.price}} руб</p>
+                </div>
+              <div class="add_to_cart">
+<!--                  <a href="{% url 'add_to_cart_home' id_prod=product1.pk %}" class="btn_3">add to cart</a>-->
+                  <input type="submit" class="btn_3" value="add to cart">
+              </div>
+            </div>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--================End Single Product Area =================-->
+
+
+       {% endblock %}

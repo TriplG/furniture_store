@@ -1,0 +1,135 @@
+{% extends 'Basket/base.html' %}
+{% load static %}
+
+<title>{{ title }}</title>
+
+{% block content %}
+<script type="text/javascript">
+  function showOrHide(cb, cat) {
+    cb = document.getElementById(cb);
+    cat = document.getElementById(cat);
+    if (cb.checked) cat.style.display = "block";
+    else cat.style.display = "none";
+  }
+</script>
+
+
+    <!-- breadcrumb part start-->
+    <section class="breadcrumb_part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <h2>Оформите заказ</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end-->
+  <!--================Checkout Area =================-->
+<section class="checkout_area section_padding">
+
+    <div class="container">
+      <div class="billing_details">
+        <div class="row">
+          <div class="col-lg-8">
+            <h3>Проверьте реквизиты</h3>
+<form class="row contact_form" id="form" action="{% url 'add_order' %}" method="post" novalidate="novalidate">
+{% csrf_token %}
+              <div class="col-md-6 form-group p_star">
+                <input type="text" class="form-control" id="first" name="first_name" />
+                <span class="placeholder" data-placeholder="Имя"></span>
+              </div>
+              <div class="col-md-6 form-group p_star">
+                <input type="text" class="form-control" id="last" name="last_name" />
+                <span class="placeholder" data-placeholder="Фамилия"></span>
+              </div>
+
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="zip1" name="nomber" placeholder="Введите номер телефона" />
+              </div>
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="zip2" name="email" placeholder="Введите адрес электронной почты" />
+    </div>
+
+
+
+ <div class="col-md-12 form-group">
+ <h3 class="mb-30">Заказать доставку</h3>
+    <div class="switch-wrap d-flex justify-content-between">
+		<div class="primary-switch">
+        <input type="checkbox" id="primary-switch" name="qwerty" checked onchange = 'showOrHide("primary-switch", "cat1");'>
+		<label for="primary-switch"></label>
+		</div>
+        </div>
+        </div>
+
+        <div id="cat1" class="col-md-12 form-group">
+                <input type="text" class="form-control" id="zip3" name="street" placeholder="Введите название улицы" /><br>
+                <input type="text" class="form-control" id="zip4" name="house" placeholder="Введите номер дома" /><br>
+                <input type="text" class="form-control" id="zip5" name="number_apartment" placeholder="Введите номер квартиры" /><br>
+         </div>
+
+<!--         <div id="cat1">-->
+<!--              <div class="col-md-12 form-group">-->
+<!--                <input type="text" class="form-control" id="zip3" name="zip" placeholder="Введите название улицы" />-->
+<!--              </div>-->
+<!--              <div class="col-md-12 form-group">-->
+<!--                <input type="text" class="form-control" id="zip4" name="zip" placeholder="Введите номер дома" />-->
+<!--              </div>-->
+<!--              <div class="col-md-12 form-group">-->
+<!--                <input type="text" class="form-control" id="zip5" name="zip" placeholder="Введите номер квартиры" />-->
+<!--              </div>-->
+<!--         </div>-->
+               <div class="col-md-12 form-group">
+                <div class="creat_account">
+                  <h3>Напишите коментарий к заказу</h3>
+                </div>
+                <textarea class="form-control" name="message" id="message" rows="1"
+                  placeholder="Пимечания к заказу"></textarea>
+              </div>
+<!--              <br><br>-->
+                            </form>
+          </div>
+          <div class="col-lg-4">
+            <div class="order_box">
+              <h2>Ваш заказ</h2>
+              <ul class="list">
+                  {% for p in basket_products %}
+                <li>
+                  <a href="#">{{ p.product.title }}
+                    <span>{{ p.product.price }}</span>
+                  </a>
+                </li>
+                  {% endfor %}
+<!--                <li>-->
+<!--                  <a href="#">Fresh Blackberry-->
+<!--&lt;!&ndash;                    <span class="middle">x 02</span>&ndash;&gt;-->
+<!--                    <span class="last">$720.00</span>-->
+<!--                  </a>-->
+<!--                </li>-->
+              </ul>
+
+              <ul class="list list_2">
+
+                <li>
+                  <a href="#">Всего
+                    <span>{{ basket.final_price }}</span>
+                  </a>
+                </li>
+
+              </ul>
+
+                <input class="btn_3" form="form" type="submit" value="Оформить заказ" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+  <!--================End Checkout Area =================-->
+      {% endblock %}

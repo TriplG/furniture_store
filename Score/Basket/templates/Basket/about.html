@@ -1,0 +1,264 @@
+{% extends 'Basket/base.html' %}
+{% load static %}
+
+    <title>{{ title }}</title>
+{% block content %}
+
+    <!-- breadcrumb part start-->
+    <section class="breadcrumb_part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <h2>
+                            МЕБЕЛЬ ДЛЯ ДОМА ВАШЕЙ МЕЧТЫ
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end-->
+    
+    <!-- product list part start-->
+    <section class="about_us padding_top">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="about_us_content">
+                        <h5>Сайт Мебели - правильный выбор</h5>
+                        <h3>
+Наша компания является прямым поставщиком мебели многих Российских производителей. Основной наш ассортимент - готовая продукция мебельных фабрик.
+
+Регулярные поставки с фабрик позволяют быстро пополнять ассортимент складской программы.
+
+На весь ассортимент мебели имеется гарантия производителя.
+
+Наш нтернет магазин предлагает широкий выбор самой различной мебели. В каталоге, который постоянно обновляется, Вы сможете найти мебель, о какой давно мечтали и хотели приобрести.
+    </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--<section class="feature_part section_padding">-->
+    <section style="height:50%;">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-6">
+                    <div class="feature_part_tittle">
+                        <h1>Информация о магазине:</h1>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--  <section class="contact-section section_padding">-->
+      <section>
+    <div class="container">
+      <div class="d-none d-sm-block mb-5 pb-4">
+<!--        <div id="map" style="height: 480px;"></div>-->
+<!--                  <div id="map" style="height: 480px;"></div>-->
+        <script>
+          function initMap() {
+            var uluru = {
+              lat: -25.363,
+              lng: 131.044
+            };
+            var grayStyles = [{
+                featureType: "all",
+                stylers: [{
+                    saturation: -90
+                  },
+                  {
+                    lightness: 50
+                  }
+                ]
+              },
+              {
+                elementType: 'labels.text.fill',
+                stylers: [{
+                  color: '#ccdee9'
+                }]
+              }
+            ];
+            var map = new google.maps.Map(document.getElementById('map'), {
+              center: {
+                lat: -31.197,
+                lng: 150.744
+              },
+              zoom: 9,
+              styles: grayStyles,
+              scrollwheel: false
+            });
+          }
+        </script>
+<!--        <script-->
+<!--          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap">-->
+<!--        </script>-->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1633.5095297691653!2d37.543010297616576!3d55.73842918620773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54be942fe1ed9%3A0x15ba42b8548abf13!2z0J7QsdGJ0LXQttC40YLQuNC1IOKEljgg0KHRgtCw0L3QutC40L0!5e0!3m2!1sru!2sru!4v1650867797360!5m2!1sru!2sru" width="1100px" height="480px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      </div>
+<div class="row">
+        <div class="col-12">
+          <h2 class="contact-title">Связаться:</h2>
+        </div>
+        <div class="col-lg-8">
+          <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm"
+            novalidate="novalidate">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+
+                  <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'"
+                    placeholder='Введите сообщение'></textarea>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Enter your name'" placeholder='Введите ваше имя'>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Enter email address'" placeholder='Введите адресс электронной почты'>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Enter Subject'" placeholder='Введите тему'>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <a href="#" class="btn_3 button-contactForm">Отправить сообщение</a>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-4">
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-home"></i></span>
+            <div class="media-body">
+              <h3>Россия, Москва.</h3>
+              <p>Краснопресненская наб. 12</p>
+            </div>
+          </div>
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+            <div class="media-body">
+              <h3>8-977-974-60-47</h3>
+              <p>пн-сб с 8:00 до 18:00</p>
+            </div>
+          </div>
+          <div class="media contact-info">
+            <span class="contact-info__icon"><i class="ti-email"></i></span>
+            <div class="media-body">
+              <h3>sasha-aleyynik@mail.ru</h3>
+              <p>Отправьте нам письмо в любое время!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!--                        <div class="about_us_video">-->
+<!--                            <img src="{% static 'img/about_us_video.png' %}" alt="#" class="img-fluid">-->
+<!--                            <a class="about_video_icon popup-youtube" href="https://www.youtube.com/watch?v=FnqEn-zu5GA"></a>-->
+<!--                        </div>-->
+
+    <!-- product list part end-->
+
+    <!-- feature part here -->
+    <section class="feature_part section_padding">
+        <div class="container" >
+            <div class="row justify-content-between">
+                <div class="col-lg-6">
+                    <div class="feature_part_tittle">
+                        <h3>На сайте только актуальный ассортимент, конечные цены и реальные фотографии.</h3>
+<!--На сайте только актуальный ассортимент, конечные цены и реальные фотографии.-->
+<!--        Но если вам хочется живого общения — мы только рады, ведь мебельная тема — наша самая большая любовь.-->
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="feature_part_content">
+                        <p>Нас советуют друзьям, у нас совершают свои первые покупки веселые новоселы, у нас покупают мамам,
+                            в офис и домой. К нам приходят снова и снова в поисках вдохновения и уюта.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_feature_part">
+                        <img src="{% static 'img/icon/feature_icon_1.svg' %}" alt="#">
+                        <h4>Поддержка кредитных карт</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_feature_part">
+                        <img src="{% static 'img/icon/feature_icon_2.svg' %}" alt="#">
+                        <h4>Онлайн-заказ</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_feature_part">
+                        <img src="{% static 'img/icon/feature_icon_3.svg' %}" alt="#">
+                        <h4>Бесплатная доставка</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_feature_part">
+                        <img src="{% static 'img/icon/feature_icon_4.svg' %}" alt="#">
+                        <h4>Товар с подарком</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- feature part end -->
+    
+    <!-- client review part here -->
+    <section class="client_review">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="client_review_slider owl-carousel">
+                        <div class="single_client_review">
+                            <div class="client_img">
+                                <img src="{% static 'img/client.png' %}" alt="#">
+                            </div>
+                            <p>"Уважая историю, вы все равно должны привнести свой собственный опыт в ваш дом.</p>
+                            <h5>- Иштван Франсер</h5>
+                        </div>
+                        <div class="single_client_review">
+                            <div class="client_img">
+                                <img src="{% static 'img/client_1.png' %}" alt="#">
+                            </div>
+                            <p>"Взгляд не должен быть прикован к определенному месту в комнате. Вся комната в целом должна вызывать улыбку и будить фантазию.</p>
+                            <h5>- Люсьен Риз Робертс</h5>
+                        </div>
+                        <div class="single_client_review">
+                            <div class="client_img">
+                                <img src="{% static 'img/client_2.png' %}" alt="#">
+                            </div>
+                            <p>"В хорошем дизайне функциональность всегда первична, независимо от форм. Но она не должна угнетать эмоции</p>
+                            <h5>- Джорджио Сапорити
+</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- client review part end -->
+
+
+    {% endblock %}

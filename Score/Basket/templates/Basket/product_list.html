@@ -1,0 +1,91 @@
+{% extends 'Basket/base.html' %}
+{% load static %}
+
+<title>{{ title }}</title>
+
+{% block content %}
+
+
+    <!-- breadcrumb part start-->
+    <section class="breadcrumb_part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <h2>МЕБЕЛЬ МАГАЗИНА</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end-->
+
+
+{% for contact in page_obj %}
+<p>{{ contact.object_list }}</p>
+{% endfor %}
+<p>{{ page_obj }}</p>
+
+
+
+    <!-- product list part start-->
+    <section class="product_list section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="product_sidebar">
+                        <div class="single_sedebar">
+                            <form action="{% url 'product_list' slug_cat=cat_url slug_mat=mat_url var_more_local=more_number %}">
+                                <input type="text" name="search" placeholder="Поиск" >
+                                <i class="ti-search"></i>
+                            </form>
+                        </div>
+                        <div class="single_sedebar">
+                            <div class="select_option">
+                                <div class="select_option_list">{{ cat_name }}<i class="right fas fa-caret-down"></i> </div>
+                                <div class="select_option_dropdown">
+                                    <p><a href="{% url 'product_list' slug_cat=base_cat slug_mat=mat_url var_more_local=1 %}">Нет категории</a></p>
+                                    {% for c in category_all %}
+                                    <p><a href="{% url 'product_list' slug_cat=c.slug slug_mat=mat_url var_more_local=1 %}">{{ c.name }}</a></p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_sedebar">
+                            <div class="select_option">
+                                <div class="select_option_list">{{ mat_name }}<i class="right fas fa-caret-down"></i> </div>
+                                <div class="select_option_dropdown">
+                                    <p><a href="{% url 'product_list' slug_cat=cat_url slug_mat=base_mat var_more_local=1 %}">Любые материалы</a></p>
+                                    {% for m in material_all %}
+                                    <p><a href="{% url 'product_list' slug_cat=cat_url slug_mat=m.slug var_more_local=1 %}">{{ m.name }}</a></p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="product_list">
+                        <div class="row">
+                            <div class="col-lg-6 col-sm-6">
+                                {% for p in products_pagin %}
+                                <div class="single_product_item">
+<!--                                    <img src="{% static 'img/product/product_list_1.png' %}" alt="#" class="img-fluid">-->
+                                <img src="{{ p.image.url }}" alt="#" class="img-fluid">
+                                    <h3> <a href="{% url 'product' id_product=p.pk %}">{{ p.title }}</a> </h3>
+                                    <p>{{ p.price }} руб</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="load_more_btn text-center">
+                            <a href="{% url 'product_more' slug_cat=cat_url slug_mat=mat_url var_more_local=more_number %}" class="btn_3">Смотреть еще</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product list part end-->
+
+       {% endblock %}

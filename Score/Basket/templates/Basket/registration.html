@@ -1,0 +1,90 @@
+{% extends 'Basket/base.html' %}
+{% load static %}
+
+<title>{{ title }}</title>
+
+{% block content %}
+
+    <!-- breadcrumb part start-->
+    <section class="breadcrumb_part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <h2>Регистрация</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end-->
+
+<section class="login_part section_padding ">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6">
+                    <div class="login_part_form">
+                        <div class="login_part_form_iner">
+                            <h3>Добро пожаловать ! <br><br>
+                                Заполните следующие поля для регистрации.</h3>
+                            <form class="row contact_form" action="{% url 'add_registration' %}" method="post" novalidate="novalidate">
+                                {% csrf_token %}
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="name" name="name" value=""
+                                        placeholder="Введите логин">
+                                </div>
+                                <br><br><br>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="first_name" name="first_name" value=""
+                                        placeholder="Введите имя">
+                                </div>
+                                <br><br><br>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="last_name" name="last_name" value=""
+                                        placeholder="Введите фамилию">
+                                </div>
+                                <br><br><br>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="email" name="email" value=""
+                                        placeholder="Введите адрес электронной почты">
+                                </div>
+                                <br><br><br>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="numbet_phone" name="numbet_phone" value=""
+                                        placeholder="Введите номер телефона">
+                                </div>
+                                                                <br><br><br>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="password" class="form-control" id="password" name="password1" value=""
+                                        placeholder="Введите пароль">
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <br>
+                                    <h4>Заполните следующие поля</h4>
+                                <br>
+                                <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="street" name="street" value=""
+                                        placeholder="Укажите улицу">
+                                </div>
+                                 <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="house" name="house" value=""
+                                        placeholder="Укажите номер дома">
+                                </div>
+                                 <div class="col-md-12 form-group p_star">
+                                    <input type="text" class="form-control" id="apartament" name="apartament" value=""
+                                        placeholder="Укажите номер квартиры">
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <button type="submit" value="submit" class="btn_3">
+                                        Войти
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'Basket/base.html' %}
+{% load static %}
+
+<title>{{ title }}</title>
+
+{% block content %}
+    <!-- breadcrumb part start-->
+    <section class="breadcrumb_part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner">
+                        <h2>
+                            МЕБЕЛЬ ДЛЯ ДОМА
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end-->
+
+    <!-- product list start-->
+    <section class="single_product_list">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                                                      {% for p in products %}
+                    <div class="single_product_iner">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-lg-6 col-sm-6">
+                                <div class="single_product_img">
+                                    <img src="{{ p.image.url }}" class="img-fluid" alt="#">
+                                    <img src="{% static 'img/product_overlay.png' %}" alt="#" class="product_overlay img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-sm-6">
+                                <div class="single_product_content">
+                                    <h5>Цена {{ p.price }}</h5>
+                                    <h2> <a href="{% url 'product' p.pk %}">{{p.title}}</a> </h2>
+                                    <a href="product_list.html" class="btn_3">Explore Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- product list end-->
+
+
+
+
+ <!-- feature part here -->
+    <section class="feature_part section_padding">
+        <div class="container" >
+            <div class="row justify-content-between">
+                <div class="col-lg-6">
+                    <div class="feature_part_tittle">
+                        <h3>На сайте только актуальный ассортимент, конечные цены и реальные фотографии.</h3>
+<!--На сайте только актуальный ассортимент, конечные цены и реальные фотографии.-->
+<!--        Но если вам хочется живого общения — мы только рады, ведь мебельная тема — наша самая большая любовь.-->
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="feature_part_content">
+                        <p>Нас советуют друзьям, у нас совершают свои первые покупки веселые новоселы, у нас покупают мамам,
+                            в офис и домой. К нам приходят снова и снова в поисках вдохновения и уюта.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_feature_part">
+                        <img src="{% static 'img/icon/feature_icon_1.svg' %}" alt="#">
+                        <h4>Поддержка кредитных карт</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_feature_part">
+                        <img src="{% static 'img/icon/feature_icon_2.svg' %}" alt="#">
+                        <h4>Онлайн-заказ</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_feature_part">
+                        <img src="{% static 'img/icon/feature_icon_3.svg' %}" alt="#">
+                        <h4>Бесплатная доставка</h4>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_feature_part">
+                        <img src="{% static 'img/icon/feature_icon_4.svg' %}" alt="#">
+                        <h4>Товар с подарком</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- feature part end -->
+
+    <!-- client review part here -->
+    <section class="client_review">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="client_review_slider owl-carousel">
+                        <div class="single_client_review">
+                            <div class="client_img">
+                                <img src="{% static 'img/client.png' %}" alt="#">
+                            </div>
+                            <p>"Уважая историю, вы все равно должны привнести свой собственный опыт в ваш дом.</p>
+                            <h5>- Иштван Франсер</h5>
+                        </div>
+                        <div class="single_client_review">
+                            <div class="client_img">
+                                <img src="{% static 'img/client_1.png' %}" alt="#">
+                            </div>
+                            <p>"Взгляд не должен быть прикован к определенному месту в комнате. Вся комната в целом должна вызывать улыбку и будить фантазию.</p>
+                            <h5>- Люсьен Риз Робертс</h5>
+                        </div>
+                        <div class="single_client_review">
+                            <div class="client_img">
+                                <img src="{% static 'img/client_2.png' %}" alt="#">
+                            </div>
+                            <p>"В хорошем дизайне функциональность всегда первична, независимо от форм. Но она не должна угнетать эмоции</p>
+                            <h5>- Джорджио Сапорити
+</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- feature part end -->
+
+    {% endblock %}
